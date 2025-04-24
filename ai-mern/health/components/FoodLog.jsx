@@ -2,14 +2,9 @@ import { useState } from "react"
 import { Utensils } from "lucide-react"
 import { motion } from "framer-motion"
 
-interface FoodLogProps {
-  entries: Array<{ date: string; calories: number }>
-  addEntry: (calories: number) => void
-}
-
-const FoodLog = ({ entries, addEntry }: FoodLogProps) => {
+const FoodLog = ({ entries, addEntry }) => {
   const [foodItem, setFoodItem] = useState("")
-  const [suggestedCalories, setSuggestedCalories] = useState<number | null>(null)
+  const [suggestedCalories, setSuggestedCalories] = useState(null)
   const [customCalories, setCustomCalories] = useState("")
   const [loading, setLoading] = useState(false)
 
@@ -100,9 +95,7 @@ const FoodLog = ({ entries, addEntry }: FoodLogProps) => {
 
         <div className="relative flex items-center justify-center">
           <div className="relative w-64 h-32">
-            {/* Speedometer background with gradient */}
             <div className="absolute inset-0 bg-gradient-to-t from-slate-800 to-slate-700 rounded-t-full overflow-hidden shadow-lg">
-              {/* Tick marks */}
               {[...Array(21)].map((_, i) => (
                 <div
                   key={i}
@@ -114,18 +107,15 @@ const FoodLog = ({ entries, addEntry }: FoodLogProps) => {
               ))}
             </div>
             
-            {/* Needle with glow effect */}
             <motion.div
               initial={{ rotate: -90 }}
               animate={{ rotate: needleRotation }}
               className="absolute bottom-0 left-1/2 w-1 h-24 bg-gradient-to-t from-teal-500 to-teal-300 origin-bottom shadow-[0_0_10px_rgba(45,212,191,0.5)]"
               style={{ transformOrigin: 'bottom center' }}
             />
-            
-            {/* Center point with ring */}
+
             <div className="absolute bottom-0 left-1/2 -ml-3 w-6 h-6 bg-slate-800 rounded-full border-2 border-teal-500 shadow-[0_0_10px_rgba(45,212,191,0.3)]" />
-            
-            {/* Calorie display */}
+
             <div className="absolute -bottom-8 left-0 right-0 text-center">
               <div className="text-lg font-bold flex items-center justify-center gap-1">
                 <span className="text-white">{totalCalories.toLocaleString()}</span>
@@ -142,4 +132,3 @@ const FoodLog = ({ entries, addEntry }: FoodLogProps) => {
 }
 
 export default FoodLog
-
