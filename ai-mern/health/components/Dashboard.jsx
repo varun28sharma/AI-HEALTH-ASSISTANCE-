@@ -21,7 +21,6 @@ import FoodLog from "./FoodLog"
 import ActivityList from "./ActivityList"
 import AnalyticsPanel from "./AnalyticsPanel"
 
-// Register all required elements
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -33,25 +32,21 @@ ChartJS.register(
   Legend
 )
 
-interface DashboardProps {
-  userName: string
-}
-
-const Dashboard = ({ userName }: DashboardProps) => {
+const Dashboard = ({ userName }) => {
   const { scrollYProgress } = useScroll()
   const y = useTransform(scrollYProgress, [0, 1], [0, -50])
   const router = useRouter()
-  
+
   const [weightEntries, setWeightEntries] = useState([{ date: "2023-05-01", weight: 70 }])
-  const [foodEntries, setFoodEntries] = useState<Array<{ date: string; calories: number }>>([])
+  const [foodEntries, setFoodEntries] = useState([])
   const [newWeight, setNewWeight] = useState("")
   const [newCalories, setNewCalories] = useState("")
 
   const addWeightEntry = () => {
     if (newWeight) {
-      const newEntry = { 
-        date: new Date().toISOString().split("T")[0], 
-        weight: parseFloat(newWeight) 
+      const newEntry = {
+        date: new Date().toISOString().split("T")[0],
+        weight: parseFloat(newWeight),
       }
       setWeightEntries([...weightEntries, newEntry])
       setNewWeight("")
@@ -60,9 +55,9 @@ const Dashboard = ({ userName }: DashboardProps) => {
 
   const addFoodEntry = () => {
     if (newCalories) {
-      const newEntry = { 
-        date: new Date().toISOString().split("T")[0], 
-        calories: parseFloat(newCalories) 
+      const newEntry = {
+        date: new Date().toISOString().split("T")[0],
+        calories: parseFloat(newCalories),
       }
       setFoodEntries([...foodEntries, newEntry])
       setNewCalories("")
@@ -82,18 +77,10 @@ const Dashboard = ({ userName }: DashboardProps) => {
         </motion.h1>
 
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-          <Button icon={<Activity />} text="Work Out" onClick={() => router.push('/workout')}/>
-          <Button icon={<Utensils />} text="Diet Plan" onClick={() => router.push('/diet')}/>
-          <Button 
-            icon={<Brain />} 
-            text="Advanced Analyser" 
-            onClick={() => router.push('/analyze')}
-          />
-          <Button 
-            icon={<Scale />} 
-            text="BMI Calculator" 
-            onClick={() => router.push('/bmi')}
-          />
+          <Button icon={<Activity />} text="Work Out" onClick={() => router.push('/workout')} />
+          <Button icon={<Utensils />} text="Diet Plan" onClick={() => router.push('/diet')} />
+          <Button icon={<Brain />} text="Advanced Analyser" onClick={() => router.push('/analyze')} />
+          <Button icon={<Scale />} text="BMI Calculator" onClick={() => router.push('/bmi')} />
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
@@ -149,9 +136,7 @@ const Dashboard = ({ userName }: DashboardProps) => {
               <div
                 key={index}
                 className={`flex-1 h-3 rounded-full ${
-                  index === 0 
-                    ? "bg-teal-500" 
-                    : "bg-slate-700"
+                  index === 0 ? "bg-teal-500" : "bg-slate-700"
                 }`}
               />
             ))}
@@ -171,15 +156,7 @@ const Dashboard = ({ userName }: DashboardProps) => {
   )
 }
 
-const Button = ({ 
-  icon, 
-  text, 
-  onClick 
-}: { 
-  icon: React.ReactNode
-  text: string
-  onClick?: () => void 
-}) => (
+const Button = ({ icon, text, onClick }) => (
   <motion.button
     whileHover={{ scale: 1.05 }}
     whileTap={{ scale: 0.95 }}
@@ -192,4 +169,3 @@ const Button = ({
 )
 
 export default Dashboard
-
