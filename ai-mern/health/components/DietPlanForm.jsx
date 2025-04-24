@@ -5,14 +5,10 @@ import { motion } from "framer-motion"
 
 const mealTypes = ["Breakfast", "Lunch", "Dinner", "Snack"]
 
-interface DietPlanFormProps {
-  onSubmit: (mealType: string, items: string[]) => void
-}
-
-export default function DietPlanForm({ onSubmit }: DietPlanFormProps) {
+export default function DietPlanForm({ onSubmit }) {
   const [selectedMealType, setSelectedMealType] = useState("")
   const [foodItem, setFoodItem] = useState("")
-  const [foodItems, setFoodItems] = useState<string[]>([])
+  const [foodItems, setFoodItems] = useState([])
 
   const addFoodItem = () => {
     if (foodItem.trim()) {
@@ -21,7 +17,7 @@ export default function DietPlanForm({ onSubmit }: DietPlanFormProps) {
     }
   }
 
-  const handleKeyPress = (e: React.KeyboardEvent) => {
+  const handleKeyPress = (e) => {
     if (e.key === 'Enter') {
       addFoodItem()
     }
@@ -116,4 +112,3 @@ export default function DietPlanForm({ onSubmit }: DietPlanFormProps) {
     </motion.div>
   )
 }
-
