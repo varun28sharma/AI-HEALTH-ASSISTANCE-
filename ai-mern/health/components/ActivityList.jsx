@@ -11,7 +11,7 @@ const ActivityList = () => {
   const dailySteps = 3211
   const [showEmailAlert, setShowEmailAlert] = useState(false)
 
-  const handleShareClick = async (email: string) => {
+  const handleShareClick = async (email) => {
     try {
       const response = await fetch('/api/email/share-activity', {
         method: 'POST',
@@ -21,7 +21,6 @@ const ActivityList = () => {
       
       if (!response.ok) throw new Error('Failed to send email')
       
-      // Show success message
       alert('Activity shared successfully!')
     } catch (error) {
       console.error('Error sharing activity:', error)
@@ -81,4 +80,3 @@ const ActivityList = () => {
 }
 
 export default ActivityList
-
