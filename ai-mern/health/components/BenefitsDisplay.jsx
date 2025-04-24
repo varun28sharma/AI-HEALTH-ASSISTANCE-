@@ -3,10 +3,10 @@
 import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 
-export default function BenefitsDisplay({ selectedRecipe }: { selectedRecipe: string | null }) {
+export default function BenefitsDisplay({ selectedRecipe }) {
   const [recommendations, setRecommendations] = useState("")
   const [loading, setLoading] = useState(false)
-  const [userData, setUserData] = useState<any>(null)
+  const [userData, setUserData] = useState(null)
 
   useEffect(() => {
     const storedData = localStorage.getItem('userData')
@@ -22,7 +22,7 @@ export default function BenefitsDisplay({ selectedRecipe }: { selectedRecipe: st
     }
   }, [selectedRecipe, userData])
 
-  const fetchRecommendations = async (userData: any, recipe: string) => {
+  const fetchRecommendations = async (userData, recipe) => {
     setLoading(true)
     try {
       const response = await fetch('/api/diet-recommendations', {
@@ -79,4 +79,3 @@ export default function BenefitsDisplay({ selectedRecipe }: { selectedRecipe: st
     </motion.div>
   )
 }
-
