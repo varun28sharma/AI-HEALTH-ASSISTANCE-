@@ -1,14 +1,9 @@
 import { useState } from 'react'
 
-interface EmailShareAlertProps {
-  onClose: () => void
-  onSubmit: (email: string) => void
-}
-
-export default function EmailShareAlert({ onClose, onSubmit }: EmailShareAlertProps) {
+export default function EmailShareAlert({ onClose, onSubmit }) {
   const [email, setEmail] = useState('')
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e) => {
     e.preventDefault()
     onSubmit(email)
     onClose()
@@ -46,4 +41,4 @@ export default function EmailShareAlert({ onClose, onSubmit }: EmailShareAlertPr
       </div>
     </div>
   )
-} 
+}
