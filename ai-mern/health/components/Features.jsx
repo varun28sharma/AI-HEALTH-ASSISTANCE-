@@ -20,13 +20,7 @@ const features = [
   },
 ]
 
-interface FeatureCardProps {
-  icon: React.ElementType
-  title: string
-  description: string
-}
-
-const FeatureCard = ({ icon: Icon, title, description }: FeatureCardProps) => {
+const FeatureCard = ({ icon: Icon, title, description }) => {
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
@@ -63,4 +57,3 @@ const Features = () => {
 }
 
 export default Features
-
