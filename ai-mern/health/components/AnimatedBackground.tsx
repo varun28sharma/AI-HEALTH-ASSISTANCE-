@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react"
 import { motion } from "framer-motion"
 
 export default function AnimatedBackground() {
-  const canvasRef = useRef<HTMLCanvasElement>(null)
+  const canvasRef = useRef(null)
 
   useEffect(() => {
     const canvas = canvasRef.current
@@ -16,18 +16,12 @@ export default function AnimatedBackground() {
     canvas.width = window.innerWidth
     canvas.height = window.innerHeight
 
-    const particles: Particle[] = []
+    const particles = []
 
     class Particle {
-      x: number
-      y: number
-      size: number
-      speedX: number
-      speedY: number
-
       constructor() {
-        this.x = Math.random() * canvas!.width
-        this.y = Math.random() * canvas!.height
+        this.x = Math.random() * canvas.width
+        this.y = Math.random() * canvas.height
         this.size = Math.random() * 5 + 1
         this.speedX = Math.random() * 3 - 1.5
         this.speedY = Math.random() * 3 - 1.5
@@ -36,12 +30,10 @@ export default function AnimatedBackground() {
       update() {
         this.x += this.speedX
         this.y += this.speedY
-
         if (this.size > 0.2) this.size -= 0.1
       }
 
       draw() {
-        if (!ctx) return
         ctx.fillStyle = "#4FD1C5"
         ctx.beginPath()
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2)
@@ -53,7 +45,6 @@ export default function AnimatedBackground() {
       for (let i = 0; i < particles.length; i++) {
         particles[i].update()
         particles[i].draw()
-
         if (particles[i].size <= 0.2) {
           particles.splice(i, 1)
           i--
@@ -62,8 +53,7 @@ export default function AnimatedBackground() {
     }
 
     function animate() {
-      if (!ctx) return
-      ctx.clearRect(0, 0, canvas!.width, canvas!.height)
+      ctx.clearRect(0, 0, canvas.width, canvas.height)
       if (particles.length < 100) {
         particles.push(new Particle())
       }
@@ -74,7 +64,7 @@ export default function AnimatedBackground() {
     const animationId = animate()
 
     return () => {
-      if (animationId) cancelAnimationFrame(animationId)
+      cancelAnimationFrame(animationId)
     }
   }, [])
 
@@ -88,4 +78,3 @@ export default function AnimatedBackground() {
     />
   )
 }
-
