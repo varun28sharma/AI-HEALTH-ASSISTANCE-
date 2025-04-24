@@ -16,7 +16,7 @@ const CallToAction = () => {
           >
             Ready to Transform Your Health?
           </motion.h2>
-          
+
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -25,7 +25,7 @@ const CallToAction = () => {
           >
             Join thousands of users who have already improved their lifestyle with our personalized health assistant.
           </motion.p>
-          
+
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
