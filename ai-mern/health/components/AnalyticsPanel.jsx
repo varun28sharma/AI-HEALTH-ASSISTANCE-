@@ -51,4 +51,3 @@ const AnalyticsPanel = () => {
 }
 
 export default AnalyticsPanel
-
