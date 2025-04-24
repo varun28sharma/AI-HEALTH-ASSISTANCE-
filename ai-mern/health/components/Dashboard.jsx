@@ -33,17 +33,13 @@ ChartJS.register(
   Legend
 )
 
-interface DashboardProps {
-  userName: string
-}
-
-const Dashboard = ({ userName }: DashboardProps) => {
+const Dashboard = ({ userName }) => {
   const { scrollYProgress } = useScroll()
   const y = useTransform(scrollYProgress, [0, 1], [0, -50])
   const router = useRouter()
   
   const [weightEntries, setWeightEntries] = useState([{ date: "2023-05-01", weight: 70 }])
-  const [foodEntries, setFoodEntries] = useState<Array<{ date: string; calories: number }>>([])
+  const [foodEntries, setFoodEntries] = useState([])
   const [newWeight, setNewWeight] = useState("")
   const [newCalories, setNewCalories] = useState("")
 
@@ -175,10 +171,6 @@ const Button = ({
   icon, 
   text, 
   onClick 
-}: { 
-  icon: React.ReactNode
-  text: string
-  onClick?: () => void 
 }) => (
   <motion.button
     whileHover={{ scale: 1.05 }}
@@ -192,4 +184,3 @@ const Button = ({
 )
 
 export default Dashboard
-
