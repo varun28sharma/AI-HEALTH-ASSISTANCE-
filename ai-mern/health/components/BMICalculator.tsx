@@ -3,22 +3,15 @@
 import { useState } from "react"
 import { motion } from "framer-motion"
 
-interface BMICalculatorProps {
-  setBMI: (bmi: number) => void
-  setAge: (age: number) => void
-  setHealthIssues: (issues: string) => void
-  initialAge?: number
-}
-
-export default function BMICalculator({ setBMI, initialAge }: BMICalculatorProps) {
+export default function BMICalculator({ setBMI, initialAge }) {
   const [height, setHeight] = useState("")
   const [weight, setWeight] = useState("")
 
   const calculateBMI = () => {
-    const heightInMeters = Number.parseFloat(height) / 100
-    const weightInKg = Number.parseFloat(weight)
+    const heightInMeters = parseFloat(height) / 100
+    const weightInKg = parseFloat(weight)
     const bmi = weightInKg / (heightInMeters * heightInMeters)
-    setBMI(Number.parseFloat(bmi.toFixed(1)))
+    setBMI(parseFloat(bmi.toFixed(1)))
   }
 
   return (
@@ -66,4 +59,3 @@ export default function BMICalculator({ setBMI, initialAge }: BMICalculatorProps
     </motion.div>
   )
 }
-
