@@ -3,18 +3,11 @@
 import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 
-interface BMIFeedbackProps {
-  bmi: number | null
-  age: number | null
-  healthIssues: string
-  userData: any
-}
-
-export default function BMIFeedback({ bmi, age, healthIssues, userData }: BMIFeedbackProps) {
-  const [aiFeedback, setAiFeedback] = useState<string>("")
+export default function BMIFeedback({ bmi, age, healthIssues, userData }) {
+  const [aiFeedback, setAiFeedback] = useState("")
   const [loading, setLoading] = useState(false)
 
-  const getBMICategory = (bmi: number) => {
+  const getBMICategory = (bmi) => {
     if (bmi < 18.5) return "Underweight"
     if (bmi < 25) return "Normal weight"
     if (bmi < 30) return "Overweight"
@@ -91,4 +84,3 @@ export default function BMIFeedback({ bmi, age, healthIssues, userData }: BMIFee
     </motion.div>
   )
 }
-
