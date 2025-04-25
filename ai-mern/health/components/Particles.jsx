@@ -3,7 +3,7 @@ import { useFrame } from "@react-three/fiber"
 import * as THREE from "three"
 
 export const DorayakiDust = () => {
-  const nobitaRef = useRef<THREE.Points>(null!)
+  const nobitaRef = useRef(null)
   const takeCopterGeometry = new THREE.BufferGeometry()
   const gadgetCount = 3000
 

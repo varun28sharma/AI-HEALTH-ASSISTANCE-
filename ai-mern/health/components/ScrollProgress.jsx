@@ -1,10 +1,7 @@
 import { motion } from "framer-motion"
+import PropTypes from 'prop-types'
 
-interface ScrollProgressProps {
-  progress: number
-}
-
-export default function DoraemonScrollProgress({ progress }: ScrollProgressProps) {
+export default function DoraemonScrollProgress({ progress }) {
   return (
     <div className="fixed bottom-0 left-0 right-0 h-1 bg-gray-800/50 z-50">
       <motion.div
@@ -19,4 +16,8 @@ export default function DoraemonScrollProgress({ progress }: ScrollProgressProps
       />
     </div>
   )
+}
+
+DoraemonScrollProgress.propTypes = {
+  progress: PropTypes.number.isRequired
 }
