@@ -9,7 +9,7 @@ import { useRouter } from 'next/navigation'
 import { HeartShape } from "./HeartShape"
 
 const Particles = () => {
-  const particlesRef = useRef<THREE.Points>(null!)
+  const particlesRef = useRef(null)
   const particlesGeometry = new THREE.BufferGeometry()
   const particlesCount = 5000
 
@@ -20,8 +20,10 @@ const Particles = () => {
   particlesGeometry.setAttribute("position", new THREE.BufferAttribute(posArray, 3))
 
   useFrame(() => {
-    particlesRef.current.rotation.x += 0.0005
-    particlesRef.current.rotation.y += 0.0005
+    if (particlesRef.current) {
+      particlesRef.current.rotation.x += 0.0005
+      particlesRef.current.rotation.y += 0.0005
+    }
   })
 
   return (

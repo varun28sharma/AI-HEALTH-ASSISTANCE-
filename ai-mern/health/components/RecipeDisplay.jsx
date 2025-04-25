@@ -2,28 +2,28 @@
 
 import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
-import BenefitsDisplay from "./BenefitsDisplay"
+import DoraemonSnackDisplay from "./DoraemonSnackDisplay"
 
-interface Recipe {
+interface DoraemonRecipe {
   title: string
   ingredients: string[]
   instructions: string[]
 }
 
-interface Benefits {
+interface DoraemonBenefits {
   nutritionalBenefits: string
   fitnessGoalSupport: string
   modifications: string
 }
 
-export default function RecipeDisplay({ mealType, foodItems }: { mealType: string, foodItems: string[] }) {
-  const [recipe, setRecipe] = useState<Recipe | null>(null)
-  const [benefits, setBenefits] = useState<Benefits | null>(null)
+export default function DoraemonRecipeDisplay({ mealType, foodItems }: { mealType: string, foodItems: string[] }) {
+  const [recipe, setRecipe] = useState<DoraemonRecipe | null>(null)
+  const [benefits, setBenefits] = useState<DoraemonBenefits | null>(null)
   const [loading, setLoading] = useState(false)
   const [userData, setUserData] = useState<any>(null)
 
   useEffect(() => {
-    const storedData = localStorage.getItem('userData')
+    const storedData = localStorage.getItem('doraemonUserData')
     if (storedData) {
       setUserData(JSON.parse(storedData))
     }
@@ -31,14 +31,14 @@ export default function RecipeDisplay({ mealType, foodItems }: { mealType: strin
 
   useEffect(() => {
     if (mealType && foodItems.length > 0 && userData) {
-      fetchRecipeAndBenefits()
+      fetchDoraemonRecipeAndBenefits()
     }
   }, [mealType, foodItems, userData])
 
-  const fetchRecipeAndBenefits = async () => {
+  const fetchDoraemonRecipeAndBenefits = async () => {
     setLoading(true)
     try {
-      const response = await fetch('/api/diet-recommendations', {
+      const response = await fetch('/api/doraemon-diet-recommendations', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -60,7 +60,7 @@ export default function RecipeDisplay({ mealType, foodItems }: { mealType: strin
   if (loading) {
     return (
       <div className="text-center text-teal-400 animate-pulse">
-        Generating your personalized recipe...
+        Generating your personalized Doraemon recipe...
       </div>
     )
   }
@@ -76,7 +76,7 @@ export default function RecipeDisplay({ mealType, foodItems }: { mealType: strin
         className="bg-slate-800/30 backdrop-blur-md p-6 rounded-2xl shadow-lg border border-white/10"
       >
         <h2 className="text-2xl font-semibold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-teal-400 to-blue-500">
-          Recipe
+          Doraemon Recipe
         </h2>
         <h3 className="text-xl font-medium mb-4 text-white">{recipe.title}</h3>
         <div className="mb-6">
@@ -111,11 +111,9 @@ export default function RecipeDisplay({ mealType, foodItems }: { mealType: strin
             ))}
           </ol>
         </div>
-
       </motion.div>
 
-      <BenefitsDisplay selectedRecipe={recipe.title || null} />
+      <DoraemonSnackDisplay selectedRecipe={recipe.title || null} />
     </div>
   )
 }
-

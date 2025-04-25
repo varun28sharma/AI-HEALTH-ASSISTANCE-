@@ -6,13 +6,15 @@ import * as THREE from "three"
 import { MeshDistortMaterial } from "@react-three/drei"
 
 export const HeartShape = () => {
-  const mesh = useRef<THREE.Mesh>(null!)
-  
+  const mesh = useRef(null)
+
   useFrame((state) => {
     const t = state.clock.getElapsedTime()
     const scale = 1 + Math.sin(t * 1.5) * 0.05
-    mesh.current.scale.set(scale, scale, scale)
-    mesh.current.rotation.y = Math.sin(t * 0.5) * 0.1
+    if (mesh.current) {
+      mesh.current.scale.set(scale, scale, scale)
+      mesh.current.rotation.y = Math.sin(t * 0.5) * 0.1
+    }
   })
 
   const x = 0
@@ -37,7 +39,7 @@ export const HeartShape = () => {
             bevelSegments: 5,
             steps: 3,
             bevelSize: 0.8,
-            bevelThickness: 0.8
+            bevelThickness: 0.8,
           },
         ]}
       />
@@ -53,4 +55,4 @@ export const HeartShape = () => {
       />
     </mesh>
   )
-} 
+}

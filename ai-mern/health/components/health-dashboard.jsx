@@ -37,31 +37,6 @@ const mockData = {
   ],
 }
 
-interface ProgressData {
-  progress: {
-    stepsProgress: number
-    workoutsProgress: number
-    weightProgress: number
-  }
-  fitnessGoals: {
-    dailySteps: number
-    weeklyWorkouts: number
-    weightGoal: number
-  }
-}
-
-interface OverviewData {
-  fitnessGoals: {
-    dailySteps: number
-    weeklyWorkouts: number
-    weightGoal: number
-  }
-  weightHistory: Array<{
-    date: string
-    weight: number
-  }>
-}
-
 export default function HealthDashboard() {
   const [activeTab, setActiveTab] = useState("overview")
 
@@ -110,13 +85,7 @@ export default function HealthDashboard() {
   )
 }
 
-interface MetricCardProps {
-  title: string
-  value: string | number
-  icon: React.ReactNode
-}
-
-function MetricCard({ title, value, icon }: MetricCardProps) {
+function MetricCard({ title, value, icon }) {
   return (
     <Card className="bg-slate-800">
       <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
@@ -130,7 +99,7 @@ function MetricCard({ title, value, icon }: MetricCardProps) {
   )
 }
 
-function OverviewTab({ data }: { data: OverviewData }) {
+function OverviewTab({ data }) {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
       <Card className="bg-slate-800">
@@ -154,6 +123,7 @@ function OverviewTab({ data }: { data: OverviewData }) {
           </ul>
         </CardContent>
       </Card>
+
       <Card className="bg-slate-800">
         <CardHeader>
           <CardTitle>Weight History</CardTitle>
@@ -174,7 +144,7 @@ function OverviewTab({ data }: { data: OverviewData }) {
   )
 }
 
-function ProgressTab({ data }: { data: ProgressData }) {
+function ProgressTab({ data }) {
   return (
     <div className="space-y-6">
       <ProgressCard
@@ -199,14 +169,7 @@ function ProgressTab({ data }: { data: ProgressData }) {
   )
 }
 
-interface ProgressCardProps {
-  title: string
-  progress: number
-  goal: number
-  unit: string
-}
-
-function ProgressCard({ title, progress, goal, unit }: ProgressCardProps) {
+function ProgressCard({ title, progress, goal, unit }) {
   return (
     <Card className="bg-slate-800">
       <CardHeader>
@@ -228,4 +191,3 @@ function ProgressCard({ title, progress, goal, unit }: ProgressCardProps) {
     </Card>
   )
 }
-

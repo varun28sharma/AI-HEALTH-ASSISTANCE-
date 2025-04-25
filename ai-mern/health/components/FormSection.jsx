@@ -12,31 +12,21 @@ import {
 } from "./ui/select"
 import { motion } from "framer-motion"
 
-interface FormSectionProps {
-  section: {
-    field: string
-    label: string
-    type: string
-    options?: string[]
-  }
-  onComplete: (value: string | string[]) => void
-  className?: string
-}
-export default function FormSection({ section, onComplete, className }: FormSectionProps) {
-  const [value, setValue] = useState<string | string[]>(section.type === "multiselect" ? [] : "")
+export default function FormSection({ section, onComplete, className }) {
+  const [value, setValue] = useState(section.type === "multiselect" ? [] : "")
   const isLastSection = section.field === "fitnessGoals"
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e) => {
     e.preventDefault()
     if (
-      (Array.isArray(value) && value.length > 0) || 
+      (Array.isArray(value) && value.length > 0) ||
       (!Array.isArray(value) && value)
     ) {
       onComplete(value)
     }
   }
 
-  const handleMultiSelect = (option: string) => {
+  const handleMultiSelect = (option) => {
     if (Array.isArray(value)) {
       if (value.includes(option)) {
         setValue(value.filter(v => v !== option))
@@ -47,7 +37,7 @@ export default function FormSection({ section, onComplete, className }: FormSect
       setValue([option])
     }
   }
-  
+
   const renderInput = () => {
     switch (section.type) {
       case "email":
@@ -92,7 +82,6 @@ export default function FormSection({ section, onComplete, className }: FormSect
             </div>
           )
         }
-        case "number":
         if (section.field === "weight") {
           return (
             <div className="space-y-4">
@@ -184,7 +173,7 @@ export default function FormSection({ section, onComplete, className }: FormSect
         )
       case "select":
         return (
-          <Select onValueChange={setValue} defaultValue={value as string}>
+          <Select onValueChange={setValue} defaultValue={value}>
             <SelectTrigger className="text-2xl p-4 bg-white/10 border-none text-white placeholder-gray-400">
               <SelectValue placeholder="Select an option" />
             </SelectTrigger>
@@ -236,7 +225,7 @@ export default function FormSection({ section, onComplete, className }: FormSect
           {renderInput()}
         </div>
         <Button 
-          type="submit" 
+          type="submit"
           className="mt-4 sm:mt-6 md:mt-8 bg-gradient-to-r from-teal-500 to-purple-500 text-white hover:opacity-90 text-base sm:text-lg md:text-xl py-3 sm:py-4 md:py-6 px-4 sm:px-6 md:px-8 rounded-xl w-full transition-all duration-300 shadow-lg hover:shadow-teal-500/20"
           disabled={
             (Array.isArray(value) && value.length === 0) || 

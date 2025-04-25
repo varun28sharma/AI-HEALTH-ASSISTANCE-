@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion"
 
-export const ScanningAnimation = () => {
+export const DoraemonScanningAnimation = () => {
   return (
     <motion.div
       className="w-full max-w-md mx-auto mt-8 h-4 bg-slate-700 rounded-full overflow-hidden"
@@ -19,4 +19,3 @@ export const ScanningAnimation = () => {
     </motion.div>
   )
 }
-

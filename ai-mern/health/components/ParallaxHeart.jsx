@@ -2,7 +2,7 @@
 
 import { Parallax } from "react-scroll-parallax"
 
-export default function ParallaxHeart() {
+export default function DoraHeart() {
   return (
     <Parallax translateY={["-100px", "100px"]} scale={[0.8, 1.2]}>
       <div className="absolute bottom-0 right-0 mb-8 mr-8 z-10">
@@ -13,4 +13,3 @@ export default function ParallaxHeart() {
     </Parallax>
   )
 }
-

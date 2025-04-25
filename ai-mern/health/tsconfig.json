@@ -21,6 +21,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "components/ui/checkbox.jsx", "components/ui/card.jsx", "components/ui/button.jsx", "components/ui/input.jsx", "components/ui/label.jsx", "components/ui/select.jsx", "components/ui/textarea.jsx", "components/WeightLog.jsx", "components/WaveAnimation.jsx", "components/Testimonials.Jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "components/ui/checkbox.jsx", "components/ui/card.jsx", "components/ui/button.jsx", "components/ui/input.jsx", "components/ui/label.jsx", "components/ui/select.jsx", "components/ui/textarea.jsx", "components/WeightLog.jsx", "components/WaveAnimation.jsx", "components/Testimonials.Jsx", "components/FormSection.jsx", "components/health-dashboard.jsx", "components/HeartShape.jsx", "components/Hero.jsx", "components/ImageUpload.jsx", "components/ModelSection.jsx", "components/Parallax.jsx", "components/ParallaxBackground.jsx", "components/ParallaxHeart.jsx", "components/Particles.jsx", "components/RecipeDisplay.jsx", "components/ResultDisplay.jsx", "components/ScanningAnimation.jsx", "components/ScrollProgress.jsx"],
   "exclude": ["node_modules"]
 }
