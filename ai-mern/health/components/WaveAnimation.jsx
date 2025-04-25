@@ -1,10 +1,8 @@
-"use client"
-
-import { motion } from "framer-motion"
+import { motion } from "framer-motion";
 
 export const WaveAnimation = () => {
-  const bars = Array.from({ length: 5 })
-  
+  const bars = Array.from({ length: 5 });
+
   return (
     <div className="flex items-center gap-1 p-4">
       {bars.map((_, i) => (
@@ -18,10 +16,10 @@ export const WaveAnimation = () => {
             duration: 0.5,
             repeat: Infinity,
             delay: i * 0.1,
-            ease: "easeInOut"
+            ease: "easeInOut",
           }}
         />
       ))}
     </div>
-  )
-} 
+  );
+};

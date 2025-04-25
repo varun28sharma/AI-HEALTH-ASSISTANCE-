@@ -21,6 +21,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "components/ui/checkbox.jsx", "components/ui/card.jsx", "components/ui/button.jsx", "components/ui/input.jsx", "components/ui/label.jsx", "components/ui/select.jsx", "components/ui/textarea.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "components/ui/checkbox.jsx", "components/ui/card.jsx", "components/ui/button.jsx", "components/ui/input.jsx", "components/ui/label.jsx", "components/ui/select.jsx", "components/ui/textarea.jsx", "components/WeightLog.jsx", "components/WaveAnimation.jsx", "components/Testimonials.Jsx"],
   "exclude": ["node_modules"]
 }
